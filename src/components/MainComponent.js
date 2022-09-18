@@ -20,8 +20,14 @@ class Main extends Component {
     this.staffAdded = this.staffAdded.bind(this);
   }
 
-  staffAdded(newStaffs) {
-    this.setState({ staffs: newStaffs });
+  staffAdded(newStaff) {
+    this.setState((state) => {
+      return {
+        ...state,
+        staffs: state.staffs.concat(newStaff),
+      };
+    });
+    console.log(this.state);
   }
 
   render() {
