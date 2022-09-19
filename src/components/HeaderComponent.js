@@ -27,41 +27,39 @@ class Header extends Component {
 
   render() {
     return (
-      <>
-        <Navbar dark expand="md">
-          <div className="container">
-            <NavbarToggler onClick={this.toggleNav} />
-            <NavbarBrand className="mr-auto" href="/">
-              <img
-                className="d-inline"
-                src="assets/images/logo.png"
-                height="30"
-                width="41"
-                alt="Ristorante Con Fusion"
-              />
-            </NavbarBrand>
-            <Collapse isOpen={this.state.isNavOpen} navbar>
-              <Nav navbar>
-                <NavItem>
-                  <NavLink className="nav-link" to="/staff">
-                    <span className="fa fa-users fa-lg"></span> Nhân viên
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="nav-link" to="/department">
-                    <span className="fa fa-address-card fa-lg"></span> Phòng Ban
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink className="nav-link" to="/payroll">
-                    <span className="fa fa-money fa-lg"></span> Bảng Lương
-                  </NavLink>
-                </NavItem>
-              </Nav>
-            </Collapse>
-          </div>
-        </Navbar>
-      </>
+      <Navbar dark expand="md">
+        <div className="container">
+          <NavbarToggler onClick={this.toggleNav} />
+          <NavbarBrand className="mr-auto" href="/">
+            <img
+              className="d-inline"
+              src="assets/images/logo.png"
+              height="30"
+              width="41"
+              alt="Ristorante Con Fusion"
+            />
+          </NavbarBrand>
+          <Collapse isOpen={this.state.isNavOpen} navbar>
+            <Nav navbar>
+              <NavItem>
+                <NavLink className="nav-link" to="/staff">
+                  <span className="fa fa-users fa-lg"></span> Nhân viên
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink className="nav-link" to="/department">
+                  <span className="fa fa-address-card fa-lg"></span> Phòng Ban
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink className="nav-link" to="/payroll">
+                  <span className="fa fa-money fa-lg"></span> Bảng Lương
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </div>
+      </Navbar>
     );
   }
 }

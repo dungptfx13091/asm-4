@@ -1,8 +1,8 @@
 import React from "react";
 import { Media, Card, CardImg, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import dateFormat from "dateformat";
-
 import { Link } from "react-router-dom";
+import { Loading } from "./LoadingComponent";
 
 function RenderStaff({ staff }) {
   return (
@@ -35,24 +35,29 @@ function RenderDetail({ staff }) {
 
 const StaffDetail = (props) => {
   if (props.staff != null)
-    return (
-      <div className="container">
-        <div className="row">
-          <Breadcrumb>
-            <BreadcrumbItem>
-              <Link to="/staff">Nhân viên</Link>
-            </BreadcrumbItem>
-            <BreadcrumbItem active>{props.staff.name}</BreadcrumbItem>
-          </Breadcrumb>
-        </div>
-        <div className="row">
-          <RenderStaff staff={props.staff} />
-          <div className="col-lg-8 col-sm-7 col-12 m-1">
-            <RenderDetail staff={props.staff} />
+    if (props.isLoading) {
+      return <Loading />;
+    } else if (props.errMess) {
+      return <h4>{props.errMess}</h4>;
+    } else
+      return (
+        <div className="container">
+          <div className="row">
+            <Breadcrumb>
+              <BreadcrumbItem>
+                <Link to="/staff">Nhân viên</Link>
+              </BreadcrumbItem>
+              <BreadcrumbItem active>{props.staff.name}</BreadcrumbItem>
+            </Breadcrumb>
+          </div>
+          <div className="row">
+            <RenderStaff staff={props.staff} />
+            <div className="col-lg-8 col-sm-7 col-12 m-1">
+              <RenderDetail staff={props.staff} />
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
   else return <div></div>;
 };
 export default StaffDetail;

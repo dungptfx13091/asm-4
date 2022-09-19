@@ -8,19 +8,14 @@ import {
   Input,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import AddStaff from "./AddstaffComponent";
+import AddstaffComponent from "./AddstaffComponent";
+import { Loading } from "./LoadingComponent";
 
 class Staffs extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      staffs: props.staffs,
-      newStaff: { image: "/assets/images/alberto.png" },
-    };
-
     this.handleSearching = this.handleSearching.bind(this);
-    this.handleAddStaff = this.handleAddStaff.bind(this);
   }
 
   handleSearching() {
@@ -35,36 +30,23 @@ class Staffs extends Component {
     });
   }
 
-  handleAddStaff(staff) {
-    const newStaff = {
-      id: this.state.staffs.length,
-      ...staff,
-    };
-    console.log(newStaff);
-    this.props.staffAdded(newStaff);
-  }
-
   render() {
-    const staffs = this.state.staffs.map((staff) => {
+    console.log(this.props);
+    const staffs = this.props.staffs.staffs.map((staff) => {
       return (
         <div
           key={staff.id}
-          className="col-lg-2 col-sm-4 col-6 mt-5 border rounded"
+          className="col-lg-2 col-sm-4 col-6 mt-2 border rounded"
         >
           <Link to={`/staff/${staff.id}`}>
-            <Media tag="li" className="list-unstyled">
-              <Media left middle>
-                <Media
-                  className="w-100"
-                  object
-                  src={staff.image}
-                  alt={staff.name}
-                />
+            <div tag="li" className="list-unstyled text-center">
+              <div>
+                <Media object src={staff.image} alt={staff.name} />
+              </div>
+              <Media body>
+                <h5 heading>{staff.name}</h5>
               </Media>
-              <Media body className="ml-5">
-                <Media heading>{staff.name}</Media>
-              </Media>
-            </Media>
+            </div>
           </Link>
         </div>
       );
@@ -81,7 +63,10 @@ class Staffs extends Component {
                 </Breadcrumb>
               </div>
               <div className="col-lg-6 col-md-6 col-2">
-                <AddStaff handleAddStaff={this.handleAddStaff} />
+                <AddstaffComponent
+                  staffs={this.props.staffs}
+                  addStaff={this.props.addStaff}
+                />
               </div>
             </div>
           </div>
@@ -94,11 +79,7 @@ class Staffs extends Component {
                 name="keyword"
                 innerRef={(input) => (this.keyword = input)}
               />
-              <Button
-                type="submit"
-                color="primary"
-                onClick={this.handleSearching}
-              >
+              <Button type="submit" color="primary">
                 Tìm
               </Button>
             </InputGroup>
