@@ -11,10 +11,9 @@ export const Staffs = (
   switch (action.type) {
     case ActionTypes.ADD_STAFF: //Add newStaff
       var newStaff = action.payload;
-      newStaff.id = state.length;
       newStaff.image = "/assets/images/alberto.png";
       console.log("newStaff", newStaff);
-      return state.concat(newStaff);
+      return { ...state, staffs: state.staffs.concat(newStaff) };
 
     case ActionTypes.ADD_STAFFS:
       return {

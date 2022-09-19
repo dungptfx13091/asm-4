@@ -1,17 +1,10 @@
 import React, { Component } from "react";
-import { DEPARTMENTS } from "../shared/staffs";
+import { Breadcrumb, BreadcrumbItem } from "reactstrap";
+import { Loading } from "./LoadingComponent";
 
 class Department extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      departments: DEPARTMENTS,
-    };
-  }
-
   render() {
-    const departments = this.state.departments.map((department) => {
+    const departments = this.props.departments.map((department) => {
       return (
         <div
           key={department.id}
@@ -22,11 +15,34 @@ class Department extends Component {
         </div>
       );
     });
-    return (
-      <div className="container">
-        <div className="row">{departments}</div>
-      </div>
-    );
+
+    if (this.props.isLoading) {
+      return (
+        <div className="container">
+          <div className="row">
+            <Loading />
+          </div>
+        </div>
+      );
+    } else if (this.props.errMess) {
+      return (
+        <div className="container">
+          <div className="row">
+            <h4>{this.props.errMess}</h4>
+          </div>
+        </div>
+      );
+    } else
+      return (
+        <div className="container">
+          <div className="col-lg-4 col-sm-6 col-12">
+            <Breadcrumb>
+              <BreadcrumbItem active>Nhân viên</BreadcrumbItem>
+            </Breadcrumb>
+          </div>
+          <div className="row">{departments}</div>
+        </div>
+      );
   }
 }
 export default Department;

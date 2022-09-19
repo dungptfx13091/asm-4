@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {
   Button,
-  Input,
   Modal,
   ModalHeader,
   ModalBody,
@@ -14,7 +13,7 @@ import { Control, LocalForm, Errors } from "react-redux-form";
 const required = (val) => val && val.length;
 const maxLength = (len) => (val) => !val || val.length <= len;
 const minLength = (len) => (val) => val && val.length >= len;
-const selected = (val) => val != "Select";
+const selected = (val) => val !== "Select";
 const maxValue = (max) => (val) => !val || val <= max;
 const minValue = (min) => (val) => val && val >= min;
 const isNumber = (val) => !isNaN(Number(val));
@@ -22,8 +21,6 @@ const isNumber = (val) => !isNaN(Number(val));
 class AddstaffComponent extends Component {
   constructor(props) {
     super(props);
-
-    console.log(props);
 
     this.state = {
       staffs: props.staffs,
@@ -43,7 +40,7 @@ class AddstaffComponent extends Component {
 
   handleSubmit(values) {
     this.toggleModal();
-    this.props.addStaff(
+    this.props.addStaffToServer(
       values.name,
       values.doB,
       values.startDate,
