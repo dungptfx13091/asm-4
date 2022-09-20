@@ -23,7 +23,7 @@ class Staffs extends Component {
   }
 
   handleSearching() {
-    const searchResult = this.state.staffs.filter((staff) => {
+    const searchResult = this.props.staffs.filter((staff) => {
       return staff.name
         .toLowerCase()
         .includes(this.keyword.value.toLowerCase());
@@ -36,7 +36,7 @@ class Staffs extends Component {
 
   render() {
     console.log("Staffs Component Props", this.props);
-    const staffs = this.props.staffs.map((staff) => {
+    const staffs = this.state.staffs.map((staff) => {
       return (
         <div
           key={staff.id}
@@ -100,7 +100,11 @@ class Staffs extends Component {
                   name="keyword"
                   innerRef={(input) => (this.keyword = input)}
                 />
-                <Button type="submit" color="primary">
+                <Button
+                  type="submit"
+                  color="primary"
+                  onclick={this.handleSearching}
+                >
                   Tìm
                 </Button>
               </InputGroup>

@@ -40,6 +40,17 @@ class AddstaffComponent extends Component {
 
   handleSubmit(values) {
     this.toggleModal();
+
+    console.log(
+      "newStaff",
+      values.name,
+      values.doB,
+      values.startDate,
+      values.department,
+      values.salaryScale,
+      values.annualLeave,
+      values.overTime
+    );
     this.props.addStaffToServer(
       values.name,
       values.doB,
@@ -155,11 +166,11 @@ class AddstaffComponent extends Component {
                     }}
                   >
                     <option>Select</option>
-                    <option>Sale</option>
-                    <option>HR</option>
-                    <option>Marketing</option>
-                    <option>IT</option>
-                    <option>Finance</option>
+                    <option value="Dept01">Sale</option>
+                    <option value="Dept02">HR</option>
+                    <option value="Dept03">Marketing</option>
+                    <option value="Dept04">IT</option>
+                    <option value="Dept05">Finance</option>
                   </Control.select>
                   <Errors
                     className="text-danger"

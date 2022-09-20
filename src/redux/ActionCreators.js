@@ -17,6 +17,7 @@ export const addStaffToServer =
       salaryScale: salaryScale,
       annualLeave: annualLeave,
       overTime: overTime,
+      image: "/assets/images/alberto.png",
     };
     return fetch(baseUrl + "staffs", {
       method: "POST",
