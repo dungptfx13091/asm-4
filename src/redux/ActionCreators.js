@@ -19,6 +19,7 @@ export const addStaffToServer =
       overTime: overTime,
       image: "/assets/images/alberto.png",
     };
+    console.log("newStaff", newStaff);
     return fetch(baseUrl + "staffs", {
       method: "POST",
       body: JSON.stringify(newStaff),

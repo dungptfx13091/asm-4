@@ -103,7 +103,7 @@ class Staffs extends Component {
                 <Button
                   type="submit"
                   color="primary"
-                  onclick={this.handleSearching}
+                  onClick={this.handleSearching}
                 >
                   Tìm
                 </Button>

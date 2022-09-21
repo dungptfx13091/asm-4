@@ -39,18 +39,6 @@ class AddstaffComponent extends Component {
   }
 
   handleSubmit(values) {
-    this.toggleModal();
-
-    console.log(
-      "newStaff",
-      values.name,
-      values.doB,
-      values.startDate,
-      values.department,
-      values.salaryScale,
-      values.annualLeave,
-      values.overTime
-    );
     this.props.addStaffToServer(
       values.name,
       values.doB,
